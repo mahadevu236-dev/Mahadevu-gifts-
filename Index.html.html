@@ -1,0 +1,816 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ff4f87">
+<title>Happy Birthday Ishuuuuu ❤️</title>
+
+<style>
+:root {
+    --pink: #ff4f87;
+    --dark: #8d164b;
+    --light: #fff0f6;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Segoe UI", sans-serif;
+    color: #fff;
+    text-align: center;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3, #ffc3a0);
+    overflow-x: hidden;
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible {
+    outline: 3px solid white;
+    outline-offset: 4px;
+}
+
+#confetti {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.container {
+    width: 100%;
+    max-width: 620px;
+    margin: auto;
+    padding: 25px 15px 50px;
+    position: relative;
+    z-index: 1;
+}
+
+.card {
+    background: rgba(255,255,255,.19);
+    border: 1px solid rgba(255,255,255,.45);
+    border-radius: 26px;
+    padding: 28px 20px;
+    margin-bottom: 22px;
+    box-shadow: 0 12px 35px rgba(110,0,45,.16);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    animation: appear .8s ease both;
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    font-size: clamp(30px, 8vw, 46px);
+    margin: 12px 0;
+}
+
+h2 {
+    font-size: clamp(23px, 6vw, 30px);
+    margin-bottom: 15px;
+}
+
+h3 {
+    margin: 14px 0;
+}
+
+p {
+    line-height: 1.8;
+}
+
+.name {
+    color: #fff5a8;
+    text-shadow: 0 3px 12px rgba(100,0,30,.2);
+}
+
+.big-heart {
+    font-size: 65px;
+    animation: beat 1.2s infinite;
+}
+
+@keyframes beat {
+    50% { transform: scale(1.15); }
+}
+
+.cake {
+    font-size: 85px;
+    margin: 16px 0;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    50% { transform: translateY(-9px); }
+}
+
+.btn {
+    display: inline-block;
+    margin: 8px 4px;
+    padding: 13px 20px;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    color: #e93675;
+    font-weight: 700;
+    box-shadow: 0 5px 15px rgba(80,0,30,.13);
+    transition: transform .2s, background .2s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    background: #fff2f7;
+}
+
+.btn:active {
+    transform: scale(.96);
+}
+
+.btn.pink {
+    background: #e93675;
+    color: white;
+}
+
+.btn.gold {
+    background: #fff0a8;
+    color: #85304c;
+}
+
+.result {
+    min-height: 30px;
+    margin: 16px 0 4px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+.small {
+    font-size: 13px;
+    opacity: .95;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Floating hearts */
+.floating-heart {
+    position: fixed;
+    bottom: -40px;
+    pointer-events: none;
+    z-index: 0;
+    animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+    to {
+        transform: translateY(-115vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Love quiz */
+.quiz-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.quiz-options button {
+    padding: 14px 8px;
+    border: 1px solid white;
+    border-radius: 15px;
+    background: rgba(255,255,255,.9);
+    color: #a52358;
+    font-weight: 600;
+}
+
+/* Catch the hearts */
+#gameArea {
+    height: 250px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    background: rgba(255,255,255,.18);
+    border: 2px dashed rgba(255,255,255,.7);
+    margin-top: 15px;
+}
+
+.catch-heart {
+    position: absolute;
+    border: none;
+    background: transparent;
+    font-size: 34px;
+    padding: 4px;
+    line-height: 1;
+    animation: popIn .2s ease;
+}
+
+@keyframes popIn {
+    from { transform: scale(.3); }
+    to { transform: scale(1); }
+}
+
+.score {
+    font-weight: 700;
+    margin: 12px 0;
+}
+
+/* Proposal */
+.ring {
+    font-size: 75px;
+    margin: 12px;
+    animation: beat 1.5s infinite;
+}
+
+.proposal-box {
+    background: rgba(255,255,255,.16);
+    border-radius: 20px;
+    padding: 18px 10px;
+    margin-top: 15px;
+}
+
+#proposalResult {
+    margin-top: 20px;
+    font-size: 19px;
+    line-height: 1.8;
+}
+
+footer {
+    padding: 15px;
+    font-size: 14px;
+}
+
+@media(max-width: 380px) {
+    .card { padding: 23px 14px; }
+    .quiz-options { grid-template-columns: 1fr; }
+    .btn { padding: 12px 16px; }
+}
+
+@media(prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<main class="container">
+
+    <!-- BIRTHDAY SECTION -->
+    <section class="card">
+        <div class="big-heart">❤️</div>
+
+        <h1>Happy Birthday<br>
+            <span class="name">Ishuuuuu! 💗</span>
+        </h1>
+
+        <p>
+            Today, the world celebrates someone special,
+            and I get to celebrate YOU! 🎀
+        </p>
+
+        <div class="cake">🎂</div>
+
+        <p>
+            Happy Birthday, Ishuuuuu! 🥹💖<br><br>
+            May your days be full of laughter, your dreams
+            come true, and your heart always find reasons
+            to smile. You deserve beautiful memories,
+            endless happiness, and all the love in the world. 🌷
+            <br><br>
+            Ready for your little birthday adventure? 🎮💕
+        </p>
+
+        <button class="btn" onclick="celebrate()">
+            🎉 Celebrate!
+        </button>
+
+        <button class="btn" onclick="document.getElementById('quiz').scrollIntoView({behavior:'smooth'})">
+            💌 Start the Games
+        </button>
+    </section>
+
+
+    <!-- GAME 1: LOVE QUIZ -->
+    <section class="card" id="quiz">
+        <h2>🎮 Game 1: Love Quiz 💗</h2>
+
+        <p>
+            Let's see if you can answer these cute questions!
+        </p>
+
+        <h3 id="question">Question 1: What makes a birthday special?</h3>
+
+        <div class="quiz-options" id="quizOptions"></div>
+
+        <p class="result" id="quizResult" aria-live="polite">
+            Choose your answer! 🥰
+        </p>
+
+        <p class="small" id="quizProgress">Question 1 of 4</p>
+
+        <button class="btn hidden" id="nextQuestion" onclick="nextQuiz()">
+            Next Question ➜
+        </button>
+
+        <button class="btn hidden" id="restartQuiz" onclick="startQuiz()">
+            Play Again 🔄
+        </button>
+    </section>
+
+
+    <!-- GAME 2: CATCH HEARTS -->
+    <section class="card" id="catchGame">
+        <h2>💘 Game 2: Catch the Hearts</h2>
+
+        <p>
+            Tap as many hearts as you can in 15 seconds!
+            Let's see your score. 😍
+        </p>
+
+        <div class="score">
+            Score: <span id="score">0</span> ❤️
+            &nbsp;|&nbsp;
+            Time: <span id="time">15</span>s ⏰
+        </div>
+
+        <button class="btn" id="startCatch" onclick="startCatchGame()">
+            Start Game 🎮
+        </button>
+
+        <div id="gameArea" aria-label="Heart-catching game area">
+            <p style="padding-top:100px" id="gameHint">
+                Your hearts will appear here! 💕
+            </p>
+        </div>
+
+        <p class="result" id="catchResult" aria-live="polite"></p>
+    </section>
+
+
+    <!-- ROMANTIC SURPRISE -->
+    <section class="card">
+        <h2>💌 A Little Birthday Letter</h2>
+
+        <p>
+            Dear Ishuuuuu, ❤️<br><br>
+            If I could give you one gift, it would be the
+            ability to see how wonderful you are.
+            Keep being your lovely self, keep dreaming big,
+            and never stop smiling.
+            <br><br>
+            I hope this birthday becomes one of your
+            happiest memories. You deserve to feel special
+            today and every day. 🫶🏻🌸
+        </p>
+
+        <button class="btn" onclick="openLetter()">
+            💌 Open Secret Message
+        </button>
+
+        <div class="result hidden" id="secretLetter">
+            <h3>✨ Your Secret Message ✨</h3>
+            You are one of a kind, Ishuuuuu! 💖<br>
+            May life give you a million reasons to smile
+            and adventures that make your heart happy.
+            <br><br>
+            Happy Birthday, princess! 🎂🌹
+        </div>
+    </section>
+
+
+    <!-- PROPOSAL GAME -->
+    <section class="card" id="proposal">
+        <h2>💍 Final Game: A Little Question</h2>
+
+        <div class="ring">💍</div>
+
+        <p>
+            Ishuuuuu, you've completed your birthday games! 🥹💕
+            <br><br>
+            Now comes one last little surprise...
+        </p>
+
+        <div class="proposal-box">
+            <h2>Will you be my special person? ❤️</h2>
+
+            <p>
+                Someone to share smiles, silly jokes,
+                lovely memories, and happy moments with? 🌷
+            </p>
+
+            <button class="btn pink" onclick="answerProposal('yes')">
+                Yes! ❤️
+            </button>
+
+            <button class="btn gold" onclick="answerProposal('absolutely')">
+                Absolutely Yes! 💖
+            </button>
+
+            <div id="proposalResult" aria-live="polite"></div>
+        </div>
+    </section>
+
+    <footer>
+        Made with lots of ❤️ for Ishuuuuu<br>
+        🎂 Happy Birthday, Cutie! 🌸
+    </footer>
+
+</main>
+
+<script>
+/* ==================================
+   CONFETTI ANIMATION
+================================== */
+
+const canvas = document.getElementById("confetti");
+const ctx = canvas.getContext("2d");
+
+let pieces = [];
+let rafId = null;
+let confettiUntil = 0;
+
+function resizeCanvas() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
+    canvas.style.width = window.innerWidth + "px";
+    canvas.style.height = window.innerHeight + "px";
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
+
+function celebrate() {
+    const colors = [
+        "#ff1744", "#ffeb3b", "#ffffff",
+        "#ff80ab", "#7c4dff", "#00e5ff",
+        "#69f0ae", "#ff9100"
+    ];
+
+    for (let i = 0; i < 160; i++) {
+        pieces.push({
+            x: Math.random() * window.innerWidth,
+            y: -20 - Math.random() * 180,
+            size: Math.random() * 7 + 3,
+            speed: Math.random() * 3 + 2,
+            drift: Math.random() * 3 - 1.5,
+            rotation: Math.random() * 360,
+            spin: Math.random() * 8 - 4,
+            color: colors[Math.floor(Math.random() * colors.length)]
+        });
+    }
+
+    confettiUntil = performance.now() + 4000;
+
+    if (rafId === null) {
+        rafId = requestAnimationFrame(drawConfetti);
+    }
+}
+
+function drawConfetti(now) {
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+    for (const p of pieces) {
+        p.x += p.drift;
+        p.y += p.speed;
+        p.rotation += p.spin;
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rotation * Math.PI / 180);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * .65);
+        ctx.restore();
+    }
+
+    pieces = pieces.filter(p => p.y < window.innerHeight + 30);
+
+    if (pieces.length || now < confettiUntil) {
+        rafId = requestAnimationFrame(drawConfetti);
+    } else {
+        ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+        rafId = null;
+    }
+}
+
+
+/* ==================================
+   FLOATING HEARTS
+================================== */
+
+function createFloatingHeart() {
+    const heart = document.createElement("div");
+    heart.className = "floating-heart";
+
+    const emojis = ["❤️", "💕", "💗", "💖", "💘", "🌸"];
+    heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 18 + 16) + "px";
+    heart.style.animationDuration = (Math.random() * 4 + 5) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 9500);
+}
+
+setInterval(createFloatingHeart, 750);
+
+
+/* ==================================
+   GAME 1: LOVE QUIZ
+================================== */
+
+const questions = [
+    {
+        q: "What makes a birthday special?",
+        options: ["Cake only 🎂", "Love & memories 💖", "Homework 📚", "Sleeping 😴"],
+        correct: 1,
+        message: "Exactly! Love and memories make it beautiful! 💕"
+    },
+    {
+        q: "What should every birthday include?",
+        options: ["Smiles 😊", "More exams 📚", "No cake 😭", "Extra chores 🧹"],
+        correct: 0,
+        message: "Yes! Your smile is the best celebration! 🌸"
+    },
+    {
+        q: "Pick your birthday superpower!",
+        options: ["Fly 🦋", "Spread happiness ✨", "Read minds 🧠", "Turn invisible 👻"],
+        correct: 1,
+        message: "Spreading happiness suits you perfectly! 💗"
+    },
+    {
+        q: "What's waiting at the end of this website?",
+        options: ["A math test ➗", "A cute surprise 💌", "More homework 📖", "Nothing 😶"],
+        correct: 1,
+        message: "You found it! A special surprise just for you! 🎁"
+    }
+];
+
+let quizIndex = 0;
+let quizScore = 0;
+let answered = false;
+
+function startQuiz() {
+    quizIndex = 0;
+    quizScore = 0;
+    answered = false;
+
+    document.getElementById("restartQuiz").classList.add("hidden");
+    document.getElementById("nextQuestion").classList.add("hidden");
+
+    renderQuestion();
+}
+
+function renderQuestion() {
+    const q = questions[quizIndex];
+
+    document.getElementById("question").textContent = q.q;
+    document.getElementById("quizProgress").textContent =
+        `Question ${quizIndex + 1} of ${questions.length}`;
+
+    document.getElementById("quizResult").textContent =
+        "Choose your answer! 🥰";
+
+    const options = document.getElementById("quizOptions");
+    options.replaceChildren();
+
+    answered = false;
+
+    q.options.forEach((option, index) => {
+        const btn = document.createElement("button");
+        btn.textContent = option;
+        btn.addEventListener("click", () => selectAnswer(index));
+        options.appendChild(btn);
+    });
+}
+
+function selectAnswer(index) {
+    if (answered) return;
+    answered = true;
+
+    const q = questions[quizIndex];
+    const buttons = document.getElementById("quizOptions").children;
+
+    for (const button of buttons) {
+        button.disabled = true;
+        button.style.opacity = ".7";
+    }
+
+    if (index === q.correct) {
+        quizScore++;
+        document.getElementById("quizResult").textContent =
+            "Correct! 💖 " + q.message;
+        celebrate();
+    } else {
+        document.getElementById("quizResult").textContent =
+            "Cute try! 💗 " + q.message;
+    }
+
+    document.getElementById("nextQuestion").classList.remove("hidden");
+
+    if (quizIndex === questions.length - 1) {
+        document.getElementById("nextQuestion").textContent =
+            "See My Score 🎉";
+    } else {
+        document.getElementById("nextQuestion").textContent =
+            "Next Question ➜";
+    }
+}
+
+function nextQuiz() {
+    if (!answered) return;
+
+    if (quizIndex < questions.length - 1) {
+        quizIndex++;
+        renderQuestion();
+    } else {
+        document.getElementById("question").textContent =
+            "You finished the Love Quiz! 🎉";
+
+        document.getElementById("quizOptions").replaceChildren();
+
+        document.getElementById("quizResult").textContent =
+            `Your score: ${quizScore}/${questions.length} 💖 ` +
+            "You deserve all the birthday love!";
+
+        document.getElementById("quizProgress").textContent =
+            "Quiz completed!";
+
+        document.getElementById("nextQuestion").classList.add("hidden");
+        document.getElementById("restartQuiz").classList.remove("hidden");
+
+        celebrate();
+    }
+}
+
+startQuiz();
+
+
+/* ==================================
+   GAME 2: CATCH THE HEARTS
+================================== */
+
+let score = 0;
+let seconds = 15;
+let gameTimer = null;
+let spawnTimer = null;
+let gameRunning = false;
+
+const gameArea = document.getElementById("gameArea");
+
+function startCatchGame() {
+    if (gameRunning) return;
+
+    clearInterval(gameTimer);
+    clearInterval(spawnTimer);
+
+    score = 0;
+    seconds = 15;
+    gameRunning = true;
+
+    document.getElementById("score").textContent = score;
+    document.getElementById("time").textContent = seconds;
+    document.getElementById("catchResult").textContent = "";
+    document.getElementById("gameHint").classList.add("hidden");
+    document.getElementById("startCatch").disabled = true;
+    document.getElementById("startCatch").textContent = "Game Running! 💗";
+
+    gameArea.querySelectorAll(".catch-heart").forEach(el => el.remove());
+
+    spawnHeart();
+
+    spawnTimer = setInterval(() => {
+        if (gameRunning) spawnHeart();
+    }, 650);
+
+    gameTimer = setInterval(() => {
+        seconds--;
+        document.getElementById("time").textContent = seconds;
+
+        if (seconds <= 0) endCatchGame();
+    }, 1000);
+}
+
+function spawnHeart() {
+    if (!gameRunning) return;
+
+    const heart = document.createElement("button");
+    heart.className = "catch-heart";
+    heart.textContent = ["❤️", "💖", "💕", "💗"][
+        Math.floor(Math.random() * 4)
+    ];
+    heart.setAttribute("aria-label", "Catch heart");
+
+    const maxX = Math.max(0, gameArea.clientWidth - 50);
+    const maxY = Math.max(0, gameArea.clientHeight - 55);
+
+    heart.style.left = Math.random() * maxX + "px";
+    heart.style.top = Math.random() * maxY + "px";
+
+    heart.addEventListener("click", () => {
+        if (!gameRunning) return;
+
+        score++;
+        document.getElementById("score").textContent = score;
+        heart.remove();
+    });
+
+    gameArea.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 1400);
+}
+
+function endCatchGame() {
+    gameRunning = false;
+    clearInterval(gameTimer);
+    clearInterval(spawnTimer);
+
+    gameArea.querySelectorAll(".catch-heart").forEach(el => el.remove());
+
+    document.getElementById("startCatch").disabled = false;
+    document.getElementById("startCatch").textContent = "Play Again 🔄";
+
+    document.getElementById("catchResult").textContent =
+        `Amazing, Ishuuuuu! You caught ${score} hearts! 💖`;
+
+    document.getElementById("gameHint").classList.remove("hidden");
+    document.getElementById("gameHint").textContent =
+        "Game over! Ready for another round? 💕";
+
+    celebrate();
+}
+
+
+/* ==================================
+   SECRET LOVE LETTER
+================================== */
+
+function openLetter() {
+    document.getElementById("secretLetter").classList.remove("hidden");
+    celebrate();
+}
+
+
+/* ==================================
+   PROPOSAL SURPRISE
+================================== */
+
+function answerProposal(answer) {
+    const result = document.getElementById("proposalResult");
+
+    if (answer === "yes") {
+        result.textContent =
+            "Awww! ❤️ You just made this birthday surprise extra special! " +
+            "Here's to smiles, beautiful memories, and lots of happiness! 🥹💖";
+    } else {
+        result.textContent =
+            "YAYYY! 💖🎉 Double the happiness, double the smiles! " +
+            "I hope we make lots of wonderful memories together! 🌹❤️";
+    }
+
+    celebrate();
+
+    result.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+    });
+}
+
+
+/* ==================================
+   OPENING CELEBRATION
+================================== */
+
+window.addEventListener("load", () => {
+    setTimeout(celebrate, 350);
+});
+</script>
+
+</body>
+</html>
